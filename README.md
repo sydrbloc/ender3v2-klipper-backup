@@ -9,7 +9,7 @@ Mods installed include:
   - https://github.com/VoronDesign
  
 - BTT SKR Mini E3 V3.0
-  -https://www.biqu.equipment/products/bigtreetech-skr-mini-e3-v2-0-32-bit-control-board-for-ender-3
+  - https://www.biqu.equipment/products/bigtreetech-skr-mini-e3-v2-0-32-bit-control-board-for-ender-3
   
 - BLTouch (with custom mount for swithcwire carriage)
  
