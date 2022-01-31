@@ -1,0 +1,6 @@
+#enable this to translate linear advance gcode to be able to use the marlin linear advance test. Disable before printing anything other than the test
+[gcode_macro M900]
+gcode:
+	# Parameters
+	{% set pa = params.K|float %}
+	SET_PRESSURE_ADVANCE ADVANCE={pa}

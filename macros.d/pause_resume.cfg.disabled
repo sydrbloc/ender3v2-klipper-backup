@@ -1,0 +1,52 @@
+[gcode_macro PAUSE]
+rename_existing: BASE_PAUSE
+gcode:
+  LED_PAUSE
+  {% set e = params.E|default(0.5) %}
+  {% set x_park = printer.toolhead.axis_maximum.x|float - 10.0 %}
+  {% set y_park = printer.toolhead.axis_maximum.y|float - 10.0 %}
+  {% set max_z = printer.toolhead.axis_maximum.z|float %}
+  {% set act_z = printer.toolhead.position.z|float %}
+  {% if act_z < (max_z - 2.0) %}
+      {% set z_safe = 2.0 %}
+  {% else %}
+      {% set z_safe = max_z %}
+  {% endif %}
+  SAVE_GCODE_STATE NAME=PAUSE_state
+  BASE_PAUSE
+  G91
+  G1 E-{e} F2100
+  G1 Z{z_safe} F900
+  G90
+  G0 X{x_park} Y{y_park} F6000
+  G91
+
+[gcode_macro RESUME]
+rename_existing: BASE_RESUME
+gcode:
+    {% set e = params.E|default(0.5) %}
+    LED_PRINTING
+    G91
+    G1 E{e} F2100
+    G90
+    RESTORE_GCODE_STATE NAME=PAUSE_state MOVE=1
+    BASE_RESUME
+    
+[gcode_macro CANCEL_PRINT]
+rename_existing: BASE_CANCEL_PRINT
+gcode:
+    {% set max_z = printer.toolhead.axis_maximum.z|float %}
+    {% set act_z = printer.toolhead.position.z|float %}
+    {% if act_z < (max_z - 25.0) %}
+        {% set z_safe = 25.0 %}
+    {% else %}
+        {% set z_safe = max_z %}
+    {% endif %}
+    LED_WHITE
+    G1 Z{z_safe} F900
+    TURN_OFF_HEATERS
+    CLEAR_PAUSE
+    SDCARD_RESET_FILE
+    BASE_CANCEL_PRINT
+    MOTORS_OFF
+

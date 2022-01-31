@@ -1,0 +1,26 @@
+[gcode_shell_command power]
+command: curl http://10.1.1.4:1880/api/pwr
+timeout: 2.
+verbose: False
+
+[gcode_shell_command usb_off]
+command: sudo uhubctl -l 1-1 -p 2 -a 0
+timeout: 2.
+verbose: True
+
+[gcode_shell_command usb_on]
+command: sudo uhubctl -l 1-1 -p 2 -a 1
+timeout: 2.
+verbose: True
+
+[gcode_macro USB_OFF]
+gcode:
+    RUN_SHELL_COMMAND CMD=usb_off
+
+[gcode_macro USB_ON]
+gcode:
+    RUN_SHELL_COMMAND CMD=usb_on
+
+[gcode_macro Power]
+gcode:
+    RUN_SHELL_COMMAND CMD=power
