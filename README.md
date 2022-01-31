@@ -8,7 +8,7 @@ Mods installed include:
   Voron Switchwire carriage block (modified for Ender 3)
     https://github.com/VoronDesign
     
-  BTT SKR Mini E3 V3.0
+  BTT SKR Mini E3 V3.0<br>
     https://www.biqu.equipment/products/bigtreetech-skr-mini-e3-v2-0-32-bit-control-board-for-ender-3
     
   BLTouch (with custom mount for swithcwire carriage)
