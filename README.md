@@ -28,5 +28,6 @@ Mods installed include:
   - https://github.com/AndrewEllis93/Print-Tuning-Guide
 
 <hr>
+
 Thank you @richardjm for your github klipper backup. Very inspiring and organized.
 - https://github.com/richardjm/voronpi-klipper-backup 
