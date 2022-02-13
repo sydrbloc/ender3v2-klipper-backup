@@ -1,10 +1,11 @@
 [mcu rpi]
-serial: /tmp/klipper_host_mcu
+#@serial: /tmp/klipper_host_mcu
+serial: /tmp/klipper_remote_mcu
 
-[adxl345]
-cs_pin: rpi:None
+#[adxl345]
+#cs_pin: rpi:None
 
-[resonance_tester]
-accel_chip: adxl345
-probe_points:
-    111.5, 115, 20  # an example
+#[resonance_tester]
+#accel_chip: adxl345
+#probe_points:
+#    111.5, 115, 20  # an example
