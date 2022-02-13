@@ -1,0 +1,32 @@
+# This file contains common pin mappings for the BIGTREETECH SKR mini
+# E3 v3.0. To use this config, the firmware should be compiled for the
+# STM32G0B1 with a "8KiB bootloader" and USB communication.
+
+# The "make flash" command does not work on the SKR mini E3. Instead,
+# after running "make", copy the generated "out/klipper.bin" file to a
+# file named "firmware.bin" on an SD card and then restart the SKR
+# mini E3 with that SD card.
+
+# See docs/Config_Reference.md for a description of parameters.
+
+[include config.d/*.cfg]
+[include macros.d/*.cfg]
+
+
+#Basic config for RPI MCU just for testing. 
+[mcu]
+serial: /tmp/klipper_host_mcu
+
+[printer]
+kinematics: none
+max_velocity: 500
+max_accel: 3000
+
+[temperature_sensor pi]
+sensor_type: temperature_host
+min_temp: 0
+max_temp: 100
+
+[board_pins]
+aliases:
+    NEO0=gpio20
